@@ -12,4 +12,3 @@ bootstrapApplication(AppComponent, appConfig)
   }
 
 const test = new Test(42);
-const test2 = new Test(43);
