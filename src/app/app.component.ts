@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { DashboardComponent } from './books/dashboard/dashboard.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, DashboardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -19,9 +20,9 @@ export class AppComponent {
 
 
   constructor(){
-    window.setTimeout(() => this.title = "bbblubbb", 1000);
+    //window.setTimeout(() => this.title = "bbblubbb", 1000);
 
-    window.setTimeout(() => this.title2.set("bbblubbb 2"), 1000);
+    //window.setTimeout(() => this.title2.set("bbblubbb 2"), 1000);
 
   }
 }
