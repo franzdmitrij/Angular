@@ -1,0 +1,30 @@
+<!--<h2>Test: {{ book?.title }} </h2>
+
+@if(book){
+<p>{{ book.description }}</p>
+}-->
+
+<!-- <h2 [ngClass]="{'text-success': tollesBuch() }">{{ book().title }}</h2>
+<p>{{ book().description }}</p>
+Tolles Buch: {{ tollesBuch() }} -->
+
+<div class="card mb-4">
+  <div class="card-body bg-light">
+      <img class="img-thumbnail float-end" alt="" src="https://api.angular.schule/avatar/{{ book().rating }}">
+    <div class="card-title">
+      <h2 [ngClass]="{ 'text-success': tollesBuch() }">
+        {{ book().title }}
+        <span class="badge bg-secondary">{{ book().rating }}</span>
+      </h2>
+    </div>
+    <p>{{ book().description }}</p>
+
+    <!-- <button (click)="1 + 1" class="btn btn-primary me-2">-1</button>
+    <button (click)="1 + 1" class="btn btn-primary me-2">+1</button> -->
+
+    // Darf nicht gemacht werden, Objekte dürfen nicht manipuliert werden
+    <button (click)="book().rating = book().rating - 1" class="btn btn-primary me-2">-1</button>
+    <button (click)="book().rating = book().rating + 1" class="btn btn-primary me-2">+1</button>
+
+  </div>
+</div>

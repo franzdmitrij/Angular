@@ -1,5 +1,16 @@
 <p>dashboard works!</p>
-<pre>
+<!--<pre>
   {{ books | json | blubb }}
 </pre>
+-->
 
+@for (item of books(); track item.isbn) {
+  <!-- @if ($index == 2) {
+    <app-book [book]='item'/>
+  } -->
+  <app-book [book]='item'/>
+}
+
+<!-- <app-book [book]='books()[0]'></app-book>
+<app-book [book]='books()[1]'></app-book>
+<app-book [book]='books()[2]'></app-book> -->
