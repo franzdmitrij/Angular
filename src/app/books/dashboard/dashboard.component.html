@@ -8,7 +8,9 @@
   <!-- @if ($index == 2) {
     <app-book [book]='item'/>
   } -->
-  <app-book [book]='item'/>
+  <app-book [book]='item'
+  (rateUp)="doRateUpHandler($event)"
+  (rateDown)="doRateDownHandler($event)"/>
 }
 
 <!-- <app-book [book]='books()[0]'></app-book>

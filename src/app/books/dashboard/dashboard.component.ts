@@ -76,4 +76,14 @@ export class DashboardComponent {
       rating: 3
     }
   ];
+
+  doRateUpHandler(book: Book){
+    console.table(book);
+    //book.rating = book.rating + 1;
+  }
+
+  doRateDownHandler(book: Book){
+    console.table(book);
+    //book.rating = book.rating - 1;
+  }
 }
