@@ -32,7 +32,7 @@ export class DashboardComponent {
       isbn: '000',
       title: 'angular',
       description: 'Tolles Buch',
-      rating: 0
+      rating: 0,
     },
     {
       isbn: '000',
