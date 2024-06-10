@@ -4,7 +4,7 @@ import { BookRatingService } from './book-rating.service';
 import { Book } from './book';
 
 // Das "f" muss wieder weg!!! Das "f" sorgt dafür, dass nur die Tests hier ausgeführt werden
-fdescribe('BookRatingService', () => {
+describe('BookRatingService', () => {
   let service: BookRatingService;
   let book: Book;
 
@@ -25,6 +25,7 @@ fdescribe('BookRatingService', () => {
 
     // Assert
     expect(rateBook.rating).toBe(4);
+
   });
 
   it('should rate down a book by one', () => {
@@ -52,5 +53,6 @@ fdescribe('BookRatingService', () => {
     expect(() => service.rateUp(frozedBook)).not.toThrow;
     expect(() => service.rateDown(frozedBook)).not.toThrow;
   });
+
 
 });

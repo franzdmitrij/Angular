@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, computed, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, computed, input, output } from '@angular/core';
 import { Book } from '../shared/book';
 import { NgClass } from '@angular/common';
 import { BookratingComponent } from './bookrating/bookrating.component';
@@ -8,7 +8,8 @@ import { BookratingComponent } from './bookrating/bookrating.component';
   standalone: true,
   imports: [NgClass, BookratingComponent],
   templateUrl: './book.component.html',
-  styleUrl: './book.component.scss'
+  styleUrl: './book.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookComponent {
 

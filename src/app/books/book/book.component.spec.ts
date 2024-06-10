@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BookComponent } from './book.component';
+import { signal } from '@angular/core';
 
 describe('BookComponent', () => {
   let component: BookComponent;
@@ -11,9 +12,17 @@ describe('BookComponent', () => {
       imports: [BookComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(BookComponent);
     component = fixture.componentInstance;
+
+    component.book = signal({
+      isbn: '',
+      title: '',
+      descripstion: '',
+      rating: 1
+    }) as any;
+
     fixture.detectChanges();
   });
 
