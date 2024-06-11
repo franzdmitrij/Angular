@@ -47,4 +47,12 @@ export class BookComponent {
     this.rateDown.emit(this.book());
   }
 
+  rateUpNotAllowed(): boolean{
+    return this.book().rating > 4;
+  }
+
+  rateDownNotAllowed(): boolean{
+    return this.book().rating < 2;
+  }
+
 }

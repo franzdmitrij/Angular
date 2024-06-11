@@ -4,6 +4,9 @@
 </pre>
 -->
 
+
+<app-book-create (create)="doCreateBookHandler($event)"></app-book-create>
+
 @for (item of books(); track item.isbn) {
   <!-- @if ($index == 2) {
     <app-book [book]='item'/>

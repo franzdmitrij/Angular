@@ -3,6 +3,7 @@ import { Book } from '../shared/book';
 import { JsonPipe, UpperCasePipe } from '@angular/common';
 import { BookComponent } from '../book/book.component';
 import { BookRatingService } from '../shared/book-rating.service';
+import { BookCreateComponent } from '../book-create/book-create.component';
 
 
 @Pipe({
@@ -20,7 +21,7 @@ export class BlubbPipe implements PipeTransform {
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [JsonPipe, UpperCasePipe, BlubbPipe, BookComponent],
+  imports: [JsonPipe, UpperCasePipe, BlubbPipe, BookComponent, BookCreateComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -115,5 +116,14 @@ export class DashboardComponent {
     .sort((a, b) => b.rating - a.rating);
 
     this.books.set(newBooks);
+  }
+
+  doCreateBookHandler(newBook: Book): void{
+    const book = {
+      ...newBook
+    }
+
+    this.books().push(book);
+    this.updateAndSort(book);
   }
 }
