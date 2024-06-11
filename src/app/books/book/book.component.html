@@ -11,7 +11,7 @@ Tolles Buch: {{ tollesBuch() }} -->
 
 <div class="card mb-4">
   <div class="card-body bg-light">
-      <img class="img-thumbnail float-end" alt="" src="{{ book().firstThumbnailUrl }}">
+      <img class="img-thumbnail float-end " alt="" src="{{ book().firstThumbnailUrl }}">
     <div class="card-title">
       <h2 [ngClass]="{ 'text-success': tollesBuch() }">
         {{ book().title }}
@@ -32,5 +32,7 @@ Tolles Buch: {{ tollesBuch() }} -->
     <button [disabled]="rateDownNotAllowed()" (click)="doRateDown()" class="btn btn-primary me-2">-1</button>
     <button [disabled]="rateUpNotAllowed()" (click)="doRateUp()" class="btn btn-primary me-2">+1</button>
 
+    <!-- Routing -->
+    <a class="btn btn-primary ms-2" [routerLink]="['/books', book().isbn]" >Details</a>
   </div>
 </div>

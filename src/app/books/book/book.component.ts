@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, comput
 import { Book } from '../shared/book';
 import { NgClass } from '@angular/common';
 import { BookratingComponent } from './bookrating/bookrating.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [NgClass, BookratingComponent],
+  imports: [NgClass, BookratingComponent, RouterLink],
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -49,13 +50,4 @@ export class BookComponent {
   doRateDown(){
     this.rateDown.emit(this.book());
   }
-
-  // rateUpNotAllowed(): boolean{
-  //   return this.book().rating > 4;
-  // }
-
-  // rateDownNotAllowed(): boolean{
-  //   return this.book().rating < 2;
-  // }
-
 }
