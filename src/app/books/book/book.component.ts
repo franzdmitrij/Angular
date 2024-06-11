@@ -34,6 +34,9 @@ export class BookComponent {
   // Neuer Stil mit Signal --> Developer Preview
   book = input.required<Book>();
 
+  rateDownNotAllowed = input<boolean>();
+  rateUpNotAllowed = input<boolean>();
+
   tollesBuch = computed(() => this.book().rating == 1);
 
   rateUp = output<Book>();
@@ -47,12 +50,12 @@ export class BookComponent {
     this.rateDown.emit(this.book());
   }
 
-  rateUpNotAllowed(): boolean{
-    return this.book().rating > 4;
-  }
+  // rateUpNotAllowed(): boolean{
+  //   return this.book().rating > 4;
+  // }
 
-  rateDownNotAllowed(): boolean{
-    return this.book().rating < 2;
-  }
+  // rateDownNotAllowed(): boolean{
+  //   return this.book().rating < 2;
+  // }
 
 }

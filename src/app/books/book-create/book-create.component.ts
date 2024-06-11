@@ -37,8 +37,6 @@ export class BookCreateComponent {
     // 4. Füge das neue Buch dem Buch-Array hinzu (immutable, z. B. mit Spread Operator)
 
     this.create.emit(newBook);
-
-
     this.bookForm.reset();
   }
 }

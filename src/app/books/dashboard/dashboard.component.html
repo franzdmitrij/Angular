@@ -13,7 +13,9 @@
   } -->
   <app-book [book]='item'
   (rateUp)="doRateUpHandler($event)"
-  (rateDown)="doRateDownHandler($event)"/>
+  (rateDown)="doRateDownHandler($event)"
+  [rateDownNotAllowed]="rateDownNotAllowed(item)"
+  [rateUpNotAllowed]="rateUpNotAllowed(item)"/>
 }
 
 <!-- <app-book [book]='books()[0]'></app-book>
