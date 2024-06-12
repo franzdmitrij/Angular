@@ -1,6 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DashboardComponent } from './books/dashboard/dashboard.component';
+import { Store } from '@ngrx/store';
+import { BookActions } from './books/store/book.actions';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +21,12 @@ export class AppComponent {
 
 
 
-  constructor(){
+  constructor(store: Store){
     //window.setTimeout(() => this.title = "bbblubbb", 1000);
 
     //window.setTimeout(() => this.title2.set("bbblubbb 2"), 1000);
+
+    store.dispatch(BookActions.loadBooks());
 
   }
 }

@@ -5,6 +5,8 @@ import { BookComponent } from '../book/book.component';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BookCreateComponent } from '../book-create/book-create.component';
 import { BookStoreService } from '../shared/book-store.service';
+import { Store } from '@ngrx/store';
+import { selectBooks, selectBooksLoading } from '../store/book.selectors';
 
 
 @Pipe({
@@ -29,12 +31,12 @@ export class BlubbPipe implements PipeTransform {
 
 export class DashboardComponent /* implements OnInit */{
 
-  br = inject(BookRatingService);
-  bs = inject(BookStoreService);
+  // br = inject(BookRatingService);
+  // bs = inject(BookStoreService);
 
   // geht auch
   constructor(private brs: BookRatingService){
-      this.bs.getAllBooks().subscribe(books => this.books.set(books));
+      //this.bs.getAllBooks().subscribe(books => this.books.set(books));
   }
 
   // ngOnInit(): void {
@@ -42,32 +44,32 @@ export class DashboardComponent /* implements OnInit */{
   // }
 
   // Neuer Stil
-  books = signal<Book[]>([
-    // {
-    //   isbn: '000',
-    //   title: 'angular 1',
-    //   description: 'Tolles Buch 1',
-    //   rating: 0,
-    // },
-    // {
-    //   isbn: '001',
-    //   title: 'angular 2',
-    //   description: 'Tolles Buch 2',
-    //   rating: 1
-    // },
-    // {
-    //   isbn: '002',
-    //   title: 'angular 3',
-    //   description: 'Tolles Buch 3',
-    //   rating: 2
-    // },
-    // {
-    //   isbn: '003',
-    //   title: 'angular 4',
-    //   description: 'Tolles Buch 4',
-    //   rating: 3
-    // }
-  ]);
+  // books = signal<Book[]>([
+  //   // {
+  //   //   isbn: '000',
+  //   //   title: 'angular 1',
+  //   //   description: 'Tolles Buch 1',
+  //   //   rating: 0,
+  //   // },
+  //   // {
+  //   //   isbn: '001',
+  //   //   title: 'angular 2',
+  //   //   description: 'Tolles Buch 2',
+  //   //   rating: 1
+  //   // },
+  //   // {
+  //   //   isbn: '002',
+  //   //   title: 'angular 3',
+  //   //   description: 'Tolles Buch 3',
+  //   //   rating: 2
+  //   // },
+  //   // {
+  //   //   isbn: '003',
+  //   //   title: 'angular 4',
+  //   //   description: 'Tolles Buch 4',
+  //   //   rating: 3
+  //   // }
+  // ]);
 
   // Alter Stil
   // Duck
@@ -92,23 +94,29 @@ export class DashboardComponent /* implements OnInit */{
     // }
   ];
 
-  doRateUpHandler(book: Book){
-    const ratedBook = this.br.rateUp(book);
-    this.updateAndSort(ratedBook);
+  books = inject(Store).selectSignal(selectBooks);
+  loading = inject(Store).selectSignal(selectBooksLoading);
 
-    console.table(book);
-    // So nicht
-    //book.rating = book.rating + 1;
+  doRateUpHandler(book: Book){
+    // const ratedBook = this.br.rateUp(book);
+    // this.updateAndSort(ratedBook);
+
+    // console.table(book);
+    // // So nicht
+    // //book.rating = book.rating + 1;
   }
 
   doRateDownHandler(book: Book){
 
-    const ratedBook = this.br.rateDown(book);
-    this.updateAndSort(ratedBook);
+    // const ratedBook = this.br.rateDown(book);
+    // this.updateAndSort(ratedBook);
 
-    console.table(book);
-    // So nicht
-    //book.rating = book.rating - 1;
+    // console.table(book);
+    // // So nicht
+    // //book.rating = book.rating - 1;
+
+
+
   }
 
   updateAndSort(ratedBook: Book): void{
@@ -117,11 +125,11 @@ export class DashboardComponent /* implements OnInit */{
     // const newBooks = [...this.books()];
     // const newBooks = this.books().map(b => b);
 
-    const newBooks = this.books()
-    .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
-    .sort((a, b) => b.rating - a.rating);
+    // const newBooks = this.books()
+    // .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
+    // .sort((a, b) => b.rating - a.rating);
 
-    this.books.set(newBooks);
+    // this.books.set(newBooks);
   }
 
   rateDownNotAllowed(b: Book): boolean{
@@ -133,16 +141,16 @@ export class DashboardComponent /* implements OnInit */{
   }
 
   doCreateBookHandler(newBook: Book): void{
-    const book = {
-      ...newBook,
-      firstThumbnailUrl: 'https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_square.jpg'
-    }
+    // const book = {
+    //   ...newBook,
+    //   firstThumbnailUrl: 'https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_square.jpg'
+    // }
 
-    // Nicht immutable, aber massiv speicher eingespart
-    // this.books.update(x => {x.push(newBook); return x;});
+    // // Nicht immutable, aber massiv speicher eingespart
+    // // this.books.update(x => {x.push(newBook); return x;});
 
-    // Imutable, so ist richtig
-    this.books.update(x => [...x, book].sort((a, b) => b.rating - a.rating));
+    // // Imutable, so ist richtig
+    // this.books.update(x => [...x, book].sort((a, b) => b.rating - a.rating));
 
     // ODER
     // const newArray = [...this.books(), newBook].sort((a, b) => b.rating - a.rating);
